@@ -7,12 +7,17 @@ function CategoriesScreen({ navigation }) {
 
   function renderCategoryItem(itemData) {
     return (
-      <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPress={pressHandler} />
+      <CategoryGridTile 
+        title={itemData.item.title} 
+        color={itemData.item.color} 
+        onPress={() => pressHandler(itemData.item.id)} />
     );
   }
   
-  const pressHandler = () => {
-    navigation.navigate('MealsOverview');
+  const pressHandler = (id) => {
+    navigation.navigate('MealsOverview', {
+      categoryId: id
+    });
   }
 
   return (
